@@ -36,7 +36,7 @@
           <div class="absolute bottom-0 right-0 w-0.5 h-full bg-gradient-to-t from-[#C9A961]/40 to-transparent"></div>
         </div>
 
-        <div class="relative z-10" id="contenido-completo">
+        <div class="relative z-10">
           <div id="titulo-despedida" class="mb-8">
             <h2 class="font-charm text-3xl md:text-3xl lg:text-3xl text-[#C9A961] font-bold mb-4">
               Querida Familia y Amigos
@@ -49,13 +49,13 @@
           </div>
 
           <div id="mensaje-despedida" class="space-y-6 mb-10">
-            <p class="font-charm text-xl md:text-2xl lg:text-3xl text-[#626a54] leading-relaxed">
+            <p class="parrafo-animado font-charm text-xl md:text-2xl lg:text-3xl text-[#626a54] leading-relaxed">
               Nos llena de felicidad poder compartir con ustedes este momento tan único y especial.
             </p>
-            <p class="font-charm text-xl md:text-2xl lg:text-3xl text-[#626a54] leading-relaxed">
+            <p class="parrafo-animado font-charm text-xl md:text-2xl lg:text-3xl text-[#626a54] leading-relaxed">
               Con la esperanza de que hagamos de este día un recuerdo inolvidable.
             </p>
-            <p class="font-charm text-xl md:text-2xl lg:text-3xl text-[#626a54] leading-relaxed">
+            <p class="parrafo-animado font-charm text-xl md:text-2xl lg:text-3xl text-[#626a54] leading-relaxed">
               Los esperamos con los corazones llenos de emoción, listos para celebrar el amor y crear memorias que permanezcan siempre en nuestros corazones.
             </p>
           </div>
@@ -112,12 +112,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       console.log('💑 Iniciando sección de despedida de boda...');
 
-      // 🎯 ESTADO INICIAL - Solo 3 elementos principales
-      gsap.set('#flores-arriba-despedida', { opacity: 0, y: 20 });
-      gsap.set('#card-despedida', { opacity: 0, y: 30 });
-      gsap.set('#flores-abajo-despedida', { opacity: 0, y: 20 });
+      // 🎯 ESTADO INICIAL - Todos con scale para animación simultánea
+      // Agrupamos todos los IDs y clases en una sola variable para más limpieza y facilidad de uso
+      const elementosAnimar = '#flores-arriba-despedida, #card-despedida, #titulo-despedida, .parrafo-animado, #linea-decorativa, #texto-confirmar, #boton-confirmar, #flores-abajo-despedida';
       
-      // ✨ ANIMACIÓN SIMPLE Y SUAVE
+      gsap.set(elementosAnimar, { opacity: 0, scale: 0.8 });
+      
+      // ✨ ANIMACIÓN SIMULTÁNEA - MÁXIMA FLUIDEZ
       ScrollTrigger.create({
         trigger: '#flores-arriba-despedida',
         start: 'top 85%',
@@ -125,62 +126,70 @@
         onEnter: () => {
           const tl = gsap.timeline();
 
-          // Solo 3 animaciones principales - SIN stagger, SIN vibraciones
-          tl.to('#flores-arriba-despedida', {
+          // Animamos TODOS los elementos JUNTOS.
+          // Usamos un pequeño 'stagger' (0.05) para evitar la carga de todos en el mismo instante (lo que causa temblor)
+          // pero es tan rápido que parece simultáneo.
+          tl.to(elementosAnimar, {
             opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: 'power2.out',
-          }, 0)
-          .to('#card-despedida', {
-            opacity: 1,
-            y: 0,
+            scale: 1,
             duration: 1.2,
-            ease: 'power2.out',
-          }, 0.2)
-          .to('#flores-abajo-despedida', {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: 'power2.out',
-          }, 0.4);
+            ease: 'back.out(1.4)',
+            stagger: 0.05, // Retraso muy pequeño para simular simultaneidad fluida
+          }, 0); // El '0' asegura que todas las animaciones empiecen inmediatamente
 
-          // 🌸 Animaciones sutiles (después de que todo apareció)
+          // 🌸 ANIMACIONES CONTINUAS (loopeadas) - Puestas dentro del 'onEnter'
+          // Las animaciones loop deben matarse si el usuario hace scroll hacia arriba (onLeaveBack)
+          
+          // Corazón latiendo
           gsap.to('#linea-decorativa svg', {
-            scale: 1.15,
+            scale: 1.3,
+            duration: 1.5,
+            ease: 'sine.inOut',
+            yoyo: true,
+            repeat: -1,
+            delay: 1.0, // Un pequeño delay para que empiece después de la animación de entrada
+          });
+
+          // Botón pulsando suavemente
+          gsap.to('#boton-confirmar img', {
+            scale: 1.05,
+            y: -5,
             duration: 2.5,
             ease: 'sine.inOut',
             yoyo: true,
             repeat: -1,
-            delay: 1.5,
+            delay: 1.0, 
           });
 
-          gsap.to('#boton-confirmar img', {
-            y: -6,
-            duration: 3,
+          // Texto confirmar con brillo sutil
+          gsap.to('#texto-confirmar', {
+            textShadow: '0 0 15px rgba(201, 169, 97, 0.5)',
+            duration: 2.5,
             ease: 'sine.inOut',
             yoyo: true,
             repeat: -1,
-            delay: 1.5,
+            delay: 1.0, 
           });
         },
         
         onLeaveBack: () => {
+          // 🔥 Detener las animaciones loopeadas (crucial para evitar consumo de CPU y bugs)
           gsap.killTweensOf('#linea-decorativa svg');
           gsap.killTweensOf('#boton-confirmar img');
+          gsap.killTweensOf('#texto-confirmar');
           
-          gsap.set('#flores-arriba-despedida', { opacity: 0, y: 20 });
-          gsap.set('#card-despedida', { opacity: 0, y: 30 });
-          gsap.set('#flores-abajo-despedida', { opacity: 0, y: 20 });
+          // Resetear todo (usando la variable de agrupación)
+          gsap.set(elementosAnimar, { opacity: 0, scale: 0.8 });
         },
       });
 
-      console.log('💑✨ ¡Sección de despedida activada!');
+      console.log('💑✨ ¡Sección de despedida activada con éxito!');
     });
   }
 </script>
 
 <style>
+  /* 🛑 ELIMINAMOS EL BLOQUE <style> DUPLICADO y el código de hover CSS se mantiene */
   #card-despedida {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -188,5 +197,18 @@
   #card-despedida:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(201, 169, 97, 0.2);
+  }
+
+  /* 🔥 PROPIEDAD CLAVE PARA MEJORAR EL RENDIMIENTO DE SCROLL/ANIMACIÓN */
+  /* Esta regla instruye al navegador a optimizar la animación de estas propiedades en la GPU */
+  #flores-arriba-despedida,
+  #card-despedida,
+  #titulo-despedida,
+  .parrafo-animado,
+  #linea-decorativa,
+  #texto-confirmar,
+  #boton-confirmar,
+  #flores-abajo-despedida {
+    will-change: transform, opacity; 
   }
 </style>
