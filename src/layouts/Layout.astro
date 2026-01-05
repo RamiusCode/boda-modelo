@@ -11,6 +11,8 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Forzar modo claro y evitar que el navegador aplique modo oscuro -->
+    <meta name="color-scheme" content="light only" />
     <link rel="icon" type="image/png" href="/iconos/Anillos.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -29,24 +31,34 @@ const { title } = Astro.props;
         box-sizing: border-box;
       }
       
-     html {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden; /* ← Elimina scroll horizontal */
-}
+      /* Forzar esquema de colores claro */
+      :root {
+        color-scheme: light only;
+      }
+      
+      html {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        color-scheme: light;
+      }
 
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden; /* ← Elimina scroll horizontal */
-    background-image: url('/imagenes/textura2.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+        background-image: url('/imagenes/textura2.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color-scheme: light;
+        /* Asegurar colores específicos */
+        background-color: #ffffff;
+        color: #000000;
+      }
 
       main {
         background: transparent !important;
