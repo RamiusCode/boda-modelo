@@ -1,14 +1,20 @@
 ---
 // CodigoVestimenta.astro - Con Hojas Laterales
 ---
+
 <section class="py-2 px-4 relative overflow-hidden">
   <!-- Fondo sutil -->
-  <div class="absolute inset-0 bg-gradient-to-b from-[#fffaf5]/40 via-[#fff9f0]/20 to-[#fffaf5]/40 z-0"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-[#fffaf5]/40 via-[#fff9f0]/20 to-[#fffaf5]/40 z-0"
+  >
+  </div>
 
   <div class="max-w-xl mx-auto text-center relative z-10">
-   
     <!-- 🍃 HOJAS LATERALES IZQUIERDA -->
-    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-12 sm:w-20 md:w-24 lg:w-28 pointer-events-none z-0 -ml-8 sm:-ml-12 md:-ml-16 lg:-ml-20" id="hoja-izq-vestimenta">
+    <div
+      class="absolute left-0 top-1/2 -translate-y-1/2 w-12 sm:w-20 md:w-24 lg:w-28 pointer-events-none z-0 -ml-8 sm:-ml-12 md:-ml-16 lg:-ml-20"
+      id="hoja-izq-vestimenta"
+    >
       <img
         src="/imagenes/Hojas.webp"
         alt="Hojas decorativas izquierda"
@@ -17,14 +23,17 @@
     </div>
 
     <!-- 🍃 HOJAS LATERALES DERECHA -->
-    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-12 sm:w-20 md:w-24 lg:w-28 pointer-events-none z-0 -mr-8 sm:-mr-12 md:-mr-16 lg:-mr-20" id="hoja-der-vestimenta">
+    <div
+      class="absolute right-0 top-1/2 -translate-y-1/2 w-12 sm:w-20 md:w-24 lg:w-28 pointer-events-none z-0 -mr-8 sm:-mr-12 md:-mr-16 lg:-mr-20"
+      id="hoja-der-vestimenta"
+    >
       <img
         src="/imagenes/Hojas.webp"
         alt="Hojas decorativas derecha"
         class="w-full h-auto object-contain opacity-80"
       />
     </div>
-   
+
     <!-- 🌸 SEPARADOR SUPERIOR -->
     <div class="flex justify-center mb-6" id="separador-superior">
       <img
@@ -33,7 +42,7 @@
         class="w-32 md:w-40 lg:w-48 h-auto object-contain opacity-90"
       />
     </div>
-    
+
     <!-- TÍTULO CÓDIGO DE VESTIMENTA -->
     <div class="mb-6" id="titulo-vestimenta">
       <h2
@@ -43,12 +52,18 @@
       </h2>
       <!-- Línea decorativa -->
       <div class="flex items-center justify-center gap-3">
-        <div class="w-16 h-[2px] bg-gradient-to-r from-transparent to-[#C9A961]"></div>
+        <div
+          class="w-16 h-[2px] bg-gradient-to-r from-transparent to-[#C9A961]"
+        >
+        </div>
         <div class="w-2 h-2 rounded-full bg-[#C9A961]"></div>
-        <div class="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#C9A961]"></div>
+        <div
+          class="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#C9A961]"
+        >
+        </div>
       </div>
     </div>
-    
+
     <!-- 👔 IMAGEN VESTIMENTA -->
     <div class="flex justify-center mb-6" id="imagen-vestimenta">
       <img
@@ -57,21 +72,19 @@
         class="w-16 md:w-28 lg:w-28 h-auto object-contain drop-shadow-lg"
       />
     </div>
-    
+
     <!-- DESCRIPCIÓN -->
     <div class="mb-4" id="descripcion-vestimenta">
       <p
-        class="font-charm text-3xl md:text-4xl text-[#C9A961] font-bold leading-relaxed"
+        class="font-charm text-3xl md:text-4xl text-[#B76E79] font-bold leading-relaxed"
       >
         Formal
       </p>
     </div>
-    
+
     <!-- NOTA IMPORTANTE -->
     <div class="mb-2" id="nota-vestimenta">
-      <p
-        class="font-charm text-lg md:text-xl text-[#626a54] leading-relaxed"
-      >
+      <p class="font-charm text-lg md:text-xl text-[#B76E79] leading-relaxed">
         Vestido para damas, traje para caballeros
       </p>
     </div>
@@ -90,9 +103,9 @@
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
- 
+
   gsap.registerPlugin(ScrollTrigger);
- 
+
   if (typeof window !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
       console.log("👔 Iniciando animación de Código de Vestimenta...");
@@ -106,7 +119,7 @@
       gsap.set("#separador-inferior", { opacity: 0, y: 30, scale: 0.8 });
       gsap.set("#hoja-izq-vestimenta", { opacity: 0, x: -60 });
       gsap.set("#hoja-der-vestimenta", { opacity: 0, x: 60 });
-     
+
       // ✨ ANIMACIÓN ELEGANTE Y SIMULTÁNEA
       ScrollTrigger.create({
         trigger: "#separador-superior",
@@ -114,7 +127,7 @@
         end: "top 20%",
         onEnter: () => {
           const tl = gsap.timeline();
-         
+
           // 🌸 TODO APARECE AL MISMO TIEMPO
           tl.to("#separador-superior", {
             opacity: 1,
@@ -123,45 +136,69 @@
             duration: 1.2,
             ease: "back.out(1.5)",
           })
-          .to("#titulo-vestimenta", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-          }, "<")
-          .to("#imagen-vestimenta", {
-            opacity: 1,
-            scale: 1,
-            rotation: 0,
-            duration: 1.3,
-            ease: "elastic.out(1, 0.5)",
-          }, "<")
-          .to("#descripcion-vestimenta", {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            ease: "power2.out",
-          }, "<")
-          .to("#nota-vestimenta", {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            ease: "power2.out",
-          }, "<")
-          .to("#separador-inferior", {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.2,
-            ease: "back.out(1.5)",
-          }, "<")
-          // 🍃 Hojas laterales aparecen deslizándose
-          .to("#hoja-izq-vestimenta, #hoja-der-vestimenta", {
-            opacity: 1,
-            x: 0,
-            duration: 1.3,
-            ease: "power3.out",
-          }, "-=0.8");
+            .to(
+              "#titulo-vestimenta",
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+              },
+              "<",
+            )
+            .to(
+              "#imagen-vestimenta",
+              {
+                opacity: 1,
+                scale: 1,
+                rotation: 0,
+                duration: 1.3,
+                ease: "elastic.out(1, 0.5)",
+              },
+              "<",
+            )
+            .to(
+              "#descripcion-vestimenta",
+              {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power2.out",
+              },
+              "<",
+            )
+            .to(
+              "#nota-vestimenta",
+              {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power2.out",
+              },
+              "<",
+            )
+            .to(
+              "#separador-inferior",
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1.2,
+                ease: "back.out(1.5)",
+              },
+              "<",
+            )
+            // 🍃 Hojas laterales aparecen deslizándose
+            .to(
+              "#hoja-izq-vestimenta, #hoja-der-vestimenta",
+              {
+                opacity: 1,
+                x: 0,
+                duration: 1.3,
+                ease: "power3.out",
+              },
+              "-=0.8",
+            );
 
           // 💫 Efecto de brillo sutil en la imagen
           gsap.to("#imagen-vestimenta", {
@@ -176,50 +213,85 @@
         onLeaveBack: () => {
           // Salida elegante
           const tl = gsap.timeline();
-          
-          tl.to("#separador-superior, #titulo-vestimenta, #imagen-vestimenta, #descripcion-vestimenta, #nota-vestimenta, #separador-inferior, #hoja-izq-vestimenta, #hoja-der-vestimenta", {
-            opacity: 0,
-            duration: 0.6,
-            ease: "power2.in",
-          })
-          .to("#separador-superior", {
-            y: -30,
-            scale: 0.8,
-            duration: 0.6,
-          }, "<")
-          .to("#titulo-vestimenta", {
-            y: -20,
-            duration: 0.6,
-          }, "<")
-          .to("#imagen-vestimenta", {
-            scale: 0.7,
-            rotation: -10,
-            duration: 0.6,
-          }, "<")
-          .to("#descripcion-vestimenta", {
-            x: -50,
-            duration: 0.6,
-          }, "<")
-          .to("#nota-vestimenta", {
-            x: 50,
-            duration: 0.6,
-          }, "<")
-          .to("#separador-inferior", {
-            y: 30,
-            scale: 0.8,
-            duration: 0.6,
-          }, "<")
-          .to("#hoja-izq-vestimenta", {
-            x: -60,
-            duration: 0.6,
-          }, "<")
-          .to("#hoja-der-vestimenta", {
-            x: 60,
-            duration: 0.6,
-          }, "<");
+
+          tl.to(
+            "#separador-superior, #titulo-vestimenta, #imagen-vestimenta, #descripcion-vestimenta, #nota-vestimenta, #separador-inferior, #hoja-izq-vestimenta, #hoja-der-vestimenta",
+            {
+              opacity: 0,
+              duration: 0.6,
+              ease: "power2.in",
+            },
+          )
+            .to(
+              "#separador-superior",
+              {
+                y: -30,
+                scale: 0.8,
+                duration: 0.6,
+              },
+              "<",
+            )
+            .to(
+              "#titulo-vestimenta",
+              {
+                y: -20,
+                duration: 0.6,
+              },
+              "<",
+            )
+            .to(
+              "#imagen-vestimenta",
+              {
+                scale: 0.7,
+                rotation: -10,
+                duration: 0.6,
+              },
+              "<",
+            )
+            .to(
+              "#descripcion-vestimenta",
+              {
+                x: -50,
+                duration: 0.6,
+              },
+              "<",
+            )
+            .to(
+              "#nota-vestimenta",
+              {
+                x: 50,
+                duration: 0.6,
+              },
+              "<",
+            )
+            .to(
+              "#separador-inferior",
+              {
+                y: 30,
+                scale: 0.8,
+                duration: 0.6,
+              },
+              "<",
+            )
+            .to(
+              "#hoja-izq-vestimenta",
+              {
+                x: -60,
+                duration: 0.6,
+              },
+              "<",
+            )
+            .to(
+              "#hoja-der-vestimenta",
+              {
+                x: 60,
+                duration: 0.6,
+              },
+              "<",
+            );
         },
       });
-     
+
       console.log("👔✨ ¡Código de Vestimenta con hojas decorativas activado!");
     });
   }

@@ -58,7 +58,7 @@
     </div>
 
     <!-- INFORMACIÓN DE UBICACIÓN -->
-    <div class="mb-6" id="info-direccion">
+    <div class="mb-2" id="info-direccion">
       <!-- Nombre del lugar -->
       <h3 class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold mb-2">
         Iglesia Parroquia Divino Maestro
@@ -66,47 +66,29 @@
 
       <!-- Dirección -->
       <p
-        class="font-charm text-lg md:text-xl text-[#B76E79] leading-relaxed mb-3"
+        class="font-charm text-lg md:text-xl text-[#000000] leading-relaxed mb-3"
       >
         Alto Obrajes
       </p>
 
       <!-- Hora -->
-      <p class="font-charm text-xl md:text-2xl text-[#B76E79] font-bold">
+      <p class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold">
         Hora: 12:00
       </p>
     </div>
 
-    <!-- BOTÓN VER UBICACIÓN PERSONALIZADO -->
+    <!-- BOTÓN VER UBICACIÓN -->
     <div class="flex justify-center" id="boton-ubicacion">
       <a
         href="https://maps.app.goo.gl/VVNiBLiELJNQXhVZA?g_st=iw"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 px-8 py-2 bg-[#B76E79] text-white rounded-full shadow-lg hover:shadow-xl hover:bg-[#a05d68] transition-all duration-300 hover:scale-105"
       >
-        <!-- Icono de ubicación -->
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-          ></path>
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-        </svg>
-
-        <!-- Texto del botón -->
-        <span class="font-charm text-lg font-semibold">Ver Ubicación</span>
+        <img
+          src="/imagenes/VerUbicacion.webp"
+          alt="Ver ubicación en el mapa"
+          class="w-56 md:w-56 lg:w-64 h-auto object-contain cursor-pointer transition-transform duration-300 hover:scale-105"
+        />
       </a>
     </div>
   </div>

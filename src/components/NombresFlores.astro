@@ -8,7 +8,7 @@
             <!-- Flores izquierda superior -->
             <div
                 id="flores-sup-izq"
-                class="w-32 sm:w-36 md:w-40 lg:w-36 flex-shrink-0"
+                class="w-36 sm:w-36 md:w-40 lg:w-36 flex-shrink-0"
             >
                 <img
                     src="/imagenes/FloresEsquina.webp"
@@ -34,11 +34,11 @@
 
         <!-- 💍 Título "Nos Casamos" (posición absoluta, centrado) -->
         <div
-            class="absolute pt-10 left-1/2 transform -translate-x-1/2 top-[20px] sm:top-[25px] md:top-[30px] lg:top-[35px] z-50"
+            class="absolute pt-14 left-1/2 transform -translate-x-1/2 top-[20px] sm:top-[25px] md:top-[30px] lg:top-[35px] z-50"
             id="titulo-container"
         >
             <h1
-                class="font-great-vibes text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#626a54] font-normal tracking-wide whitespace-nowrap"
+                class="font-great-vibes text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#B76E79] font-normal tracking-wide whitespace-nowrap"
                 id="titulo"
             >
                 Nos Casamos
@@ -61,7 +61,7 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- 💑 SECCIÓN 2: NOMBRES DE LOS NOVIOS                         -->
     <!-- ═══════════════════════════════════════════════════════════ -->
-    <div class="relative w-full pt-20 sm:pt-24 md:pt-40 lg:pt-48">
+    <div class="relative w-full pt-40 sm:pt-24 md:pt-40 lg:pt-48">
         <div class="flex justify-center w-full">
             <!-- 🌺 FLORES DORADAS IZQUIERDA (posición absoluta, lado izquierdo) -->
             <div
@@ -69,7 +69,7 @@
                 class="absolute left-0 top-[40%] transform -translate-y-1/2 flex-shrink-0 z-20"
             >
                 <img
-                    src="/imagenes/RosaDorada.webp"
+                    src="/imagenes/hojadorada.png"
                     alt="Flores doradas izquierda"
                     class="w-12 h-auto sm:w-20 md:w-24 lg:w-44 object-contain"
                 />
@@ -81,7 +81,7 @@
                 class="absolute right-0 top-[40%] transform -translate-y-1/2 flex-shrink-0 z-20"
             >
                 <img
-                    src="/imagenes/RosaDorada.webp"
+                    src="/imagenes/hojadorada.png"
                     alt="Flores doradas derecha"
                     class="w-12 h-auto sm:w-20 md:w-24 lg:w-44 object-contain scale-x-[-1]"
                 />
@@ -89,11 +89,11 @@
 
             <!-- 📝 Contenedor centrado de nombres -->
             <div class="text-center z-10 max-w-4xl w-full">
-                <div class="relative mb-8 w-full" id="nombres-container">
+                <div class="relative mb-2 w-full" id="nombres-container">
                     <div class="relative z-30">
                         <!-- 👨 Nombre del novio -->
                         <h2
-                            class="font-great-vibes text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#626a54] tracking-wide mb-2"
+                            class="font-great-vibes text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#B76E79] tracking-wide mb-2"
                             id="nombre-novio"
                         >
                         </h2>
@@ -108,7 +108,7 @@
 
                         <!-- 👰 Nombre de la novia -->
                         <h2
-                            class="font-great-vibes text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#6B6B6B] tracking-wide mt-2"
+                            class="font-great-vibes text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#B76E79] tracking-wide mt-2"
                             id="nombre-novia"
                         >
                         </h2>
@@ -137,7 +137,7 @@
             </div>
 
             <!-- ═══ SEPARADOR (centro) ═══ -->
-            <div class="flex-grow mx-4 sm:mx-6 md:mx-8" id="separador-inferior">
+            <div class="flex-grow mx-4 pb-10 sm:mx-6 md:mx-8" id="separador-inferior">
                 <img
                     src="/imagenes/Separadores.webp"
                     alt="Separador decorativo"
@@ -246,7 +246,7 @@
         }
 
         // ═══ NOMBRE DEL NOVIO ═══
-        animarNombre("nombre-novio", "Rodrigo", 0.3);
+        animarNombre("nombre-novio", "Osmar", 0.3);
 
         // ═══ SÍMBOLO & ═══
         gsap.fromTo(
@@ -262,7 +262,7 @@
         );
 
         // ═══ NOMBRE DE LA NOVIA ═══
-        animarNombre("nombre-novia", "Josefa", 0.6);
+        animarNombre("nombre-novia", "Adelaida", 0.6);
 
         // ═══ FLORES DORADAS ═══
         gsap.fromTo(
